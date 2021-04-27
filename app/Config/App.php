@@ -23,7 +23,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $baseURL = 'http://localhost:8080/';
+	public $baseURL = '';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -55,7 +55,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $uriProtocol = 'REQUEST_URI';
+	public $uriProtocol = 'PATH_INFO';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -108,7 +108,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $appTimezone = 'America/Chicago';
+	public $appTimezone = 'America/Costa_Rica';
 
 	/**
 	 * --------------------------------------------------------------------------
