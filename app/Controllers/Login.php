@@ -14,6 +14,32 @@ class Login extends BaseController
 			return view('login/login');
 		//}
 	}
+	
+	public function verificar()
+	{
+		$respuesta=0;
+
+		$UsuariosModel= new UsuariosModel();
+		$UsuariosModel->setCorreo($_POST['usuario']);
+		$usuario = $UsuariosModel->selectUsuarioCorreo();
+		
+		if ($usuario) {
+			if ($usuario->pass==$_POST['pass']) {
+				
+				$dataSesion = array(
+                    'id_usuario' => $usuario->id_usuario,
+                    'id_rol' => $usuario->id_rol,
+                    'nombre' => $usuario->nombre,
+                    'correo' => $usuario->correo,
+                );
+                $session = \Config\Services::session();
+                $session->set($dataSesion);
+
+				$respuesta=1;
+			}
+		}
+		return json_encode(array("respuesta"=>$respuesta));
+	}
 
     public function salir(){
 		$session= $this->session = \Config\Services::session();
