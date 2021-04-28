@@ -1,0 +1,175 @@
+CRITICAL - 2021-04-28 00:10:12 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:14 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:14 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:15 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:15 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:15 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:15 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:16 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:16 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:16 --> Undefined variable: nombre
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): App\Models\UsuariosModel->setUsuario('admin')
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-04-28 00:10:39 --> Undefined index: usuario
+#0 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 23, Array)
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-04-28 00:13:25 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(615): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(791): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(64): CodeIgniter\Model->__get('usuarios')
+#3 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(24): App\Models\UsuariosModel->selectUsuario()
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-04-28 00:13:26 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(615): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(791): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(64): CodeIgniter\Model->__get('usuarios')
+#3 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(24): App\Models\UsuariosModel->selectUsuario()
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-04-28 00:22:50 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(615): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(791): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(64): CodeIgniter\Model->__get('usuarios')
+#3 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(24): App\Models\UsuariosModel->selectUsuario()
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-04-28 00:22:51 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(615): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Model.php(791): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\FacturacionElectronica\app\Models\UsuariosModel.php(64): CodeIgniter\Model->__get('usuarios')
+#3 C:\xampp\htdocs\FacturacionElectronica\app\Controllers\Login.php(24): App\Models\UsuariosModel->selectUsuario()
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->verificar()
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-04-28 00:39:24 --> Cache unable to write to C:\xampp\htdocs\FacturacionElectronica\writable\cache/
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\Handlers\FileHandler.php(69): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\CacheFactory.php(55): CodeIgniter\Cache\Handlers\FileHandler->__construct(Object(Config\Cache))
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(108): CodeIgniter\Cache\CacheFactory::getHandler(Object(Config\Cache))
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(100): CodeIgniter\Config\Services::cache(Object(Config\Cache), false)
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(103): CodeIgniter\Config\BaseService::getSharedInstance('cache', NULL)
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(171): CodeIgniter\Config\Services::cache()
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Common.php(71): CodeIgniter\Config\BaseService::__callStatic('cache', Array)
+#7 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(658): cache()
+#8 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(319): CodeIgniter\CodeIgniter->displayCache(Object(Config\Cache))
+#9 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2021-04-28 00:40:04 --> Cache unable to write to C:\xampp\htdocs\FacturacionElectronica\writable\cache/
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\Handlers\FileHandler.php(69): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\CacheFactory.php(55): CodeIgniter\Cache\Handlers\FileHandler->__construct(Object(Config\Cache))
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(108): CodeIgniter\Cache\CacheFactory::getHandler(Object(Config\Cache))
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(100): CodeIgniter\Config\Services::cache(Object(Config\Cache), false)
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(103): CodeIgniter\Config\BaseService::getSharedInstance('cache', NULL)
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(171): CodeIgniter\Config\Services::cache()
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Common.php(71): CodeIgniter\Config\BaseService::__callStatic('cache', Array)
+#7 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(658): cache()
+#8 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(319): CodeIgniter\CodeIgniter->displayCache(Object(Config\Cache))
+#9 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2021-04-28 00:40:35 --> Cache unable to write to C:\xampp\htdocs\FacturacionElectronica\writable\cache/
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\Handlers\FileHandler.php(69): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\CacheFactory.php(55): CodeIgniter\Cache\Handlers\FileHandler->__construct(Object(Config\Cache))
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(108): CodeIgniter\Cache\CacheFactory::getHandler(Object(Config\Cache))
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(100): CodeIgniter\Config\Services::cache(Object(Config\Cache), false)
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(103): CodeIgniter\Config\BaseService::getSharedInstance('cache', NULL)
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(171): CodeIgniter\Config\Services::cache()
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Common.php(71): CodeIgniter\Config\BaseService::__callStatic('cache', Array)
+#7 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(658): cache()
+#8 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(319): CodeIgniter\CodeIgniter->displayCache(Object(Config\Cache))
+#9 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2021-04-28 00:40:37 --> Cache unable to write to C:\xampp\htdocs\FacturacionElectronica\writable\cache/
+#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\Handlers\FileHandler.php(69): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Cache\CacheFactory.php(55): CodeIgniter\Cache\Handlers\FileHandler->__construct(Object(Config\Cache))
+#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(108): CodeIgniter\Cache\CacheFactory::getHandler(Object(Config\Cache))
+#3 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(100): CodeIgniter\Config\Services::cache(Object(Config\Cache), false)
+#4 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\Services.php(103): CodeIgniter\Config\BaseService::getSharedInstance('cache', NULL)
+#5 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Config\BaseService.php(171): CodeIgniter\Config\Services::cache()
+#6 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\Common.php(71): CodeIgniter\Config\BaseService::__callStatic('cache', Array)
+#7 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(658): cache()
+#8 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(319): CodeIgniter\CodeIgniter->displayCache(Object(Config\Cache))
+#9 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}

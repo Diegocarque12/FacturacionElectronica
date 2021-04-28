@@ -13,11 +13,10 @@
   <link rel="stylesheet" href="<?=base_url()?>/plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url()?>/plantilla/dist/css/adminlte.min.css">
-  <link rel="icon" type="image/png" href="<?=base_url()?>/plantilla/dist/img/"><!-- Hacerlo con Imgur -->
 
   <style type="text/css">
     body { 
-      background: url(<?=base_url()?>/plantilla/dist/img/fondo.jpg) no-repeat center center fixed; 
+      background: url("https://imgur.com/a/CKW4Tc8") no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -31,7 +30,7 @@
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="<?=base_url()?>/plantilla/index2.html" class="h1">
-        <img src="<?=base_url()?>/plantilla/dist/img/" width="100px"> <!-- Hacerlo con Imgur -->
+        <img src="https://imgur.com/a/E2Ojz0f" width="100px"> <!-- Hacerlo con Imgur -->
       </a>
       <h3>Grupo #2</h3>
       <p>Alejandra Arroyo, Keilyn Ramírez, Jose Pablo Campos, Diego Carvajal</p>
