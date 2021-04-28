@@ -14,14 +14,14 @@ class Login extends BaseController
 			return view('login/login');
 		//}
 	}
-	
+
 	public function verificar()
 	{
 		$respuesta=0;
 
 		$UsuariosModel= new UsuariosModel();
-		$UsuariosModel->setCorreo($_POST['usuario']);
-		$usuario = $UsuariosModel->selectUsuarioCorreo();
+		$UsuariosModel->setUsuario($_POST['usuario']);
+		$usuario = $UsuariosModel->selectUsuarioUsuario();
 		
 		if ($usuario) {
 			if ($usuario->pass==$_POST['pass']) {
@@ -30,6 +30,7 @@ class Login extends BaseController
                     'id_usuario' => $usuario->id_usuario,
                     'id_rol' => $usuario->id_rol,
                     'nombre' => $usuario->nombre,
+                    'usuario' => $usuario->usuario,
                     'correo' => $usuario->correo,
                 );
                 $session = \Config\Services::session();
