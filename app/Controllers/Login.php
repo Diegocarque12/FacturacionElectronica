@@ -21,7 +21,7 @@ class Login extends BaseController
 
 		$UsuariosModel= new UsuariosModel();
 		$UsuariosModel->setUsuario($_POST['usuario']);
-		$usuario = $UsuariosModel->selectUsuarioUsuario();
+		$usuario = $UsuariosModel->selectUsuario();
 		
 		if ($usuario) {
 			if ($usuario->pass==$_POST['pass']) {

@@ -31,7 +31,7 @@ class UsuariosModel extends Model{
 
     public function setUsuario($usuario)
     {
-        $this->nombre = $nombre;
+        $this->usuario = $usuario;
         return $this;
     }
 
@@ -59,7 +59,7 @@ class UsuariosModel extends Model{
         return $this;
     }
     
-    public function selectUsuarioUsuario(){
+    public function selectUsuario(){
 
         $query = $this->db->table($this->usuarios);
         $query->where('usuario', $this->usuario);

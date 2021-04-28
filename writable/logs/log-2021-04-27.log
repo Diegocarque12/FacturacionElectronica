@@ -1,6 +1,0 @@
-CRITICAL - 2021-04-27 00:22:03 --> Call to undefined function App\Controllers\is_login()
-#0 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Login->login()
-#1 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
-#2 C:\xampp\htdocs\FacturacionElectronica\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#3 C:\xampp\htdocs\FacturacionElectronica\index.php(44): CodeIgniter\CodeIgniter->run()
-#4 {main}

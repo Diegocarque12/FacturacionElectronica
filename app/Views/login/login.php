@@ -72,13 +72,6 @@
           <!-- /.col -->
         </div>
       </form>
-      <!-- /.social-auth-links -->
-      <p class="mb-0">
-        <a href="<?=base_url()?>/login/registro" class="text-center">Eres nuevo Registrate...</a>
-      </p>
-       <p class="mb-0">
-        <a href="<?=base_url()?>/login/olvido" class="text-center">Olvido su contraseña?</a>
-      </p>
   </div>
     <!-- /.card-body -->
   </div>
