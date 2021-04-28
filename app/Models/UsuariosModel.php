@@ -12,6 +12,8 @@ class UsuariosModel extends Model{
     private $id_rol;
     private $activo;
 
+    private $tabla='usuarios';
+
     public function __construct()
     {
         $this->db=db_connect();
@@ -61,7 +63,7 @@ class UsuariosModel extends Model{
     
     public function selectUsuario(){
 
-        $query = $this->db->table($this->usuarios);
+        $query = $this->db->table($this->tabla);
         $query->where('usuario', $this->usuario);
         return $query->get()->getRow();
     }
