@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 class UsuariosModel extends Model{
     private $id_usuario;
     private $nombre;
+    private $usuario;
     private $correo;
     private $pass;
     private $id_rol;
@@ -23,6 +24,12 @@ class UsuariosModel extends Model{
     }
 
     public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    public function setUsuario($usuario)
     {
         $this->nombre = $nombre;
         return $this;
