@@ -28,9 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <h3>Hoy es <?=fechaCastellano(date("Y-m-d"))?></h3>
-      </li>
+     
     </ul>
 
     
@@ -171,25 +169,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Usuarios
+              Facturas
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?=base_url('usuarios/listado')?>" class="nav-link active">
+            <li class="nav-item">
+                <a href="<?=base_url('factura/listado')?>" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listado</p>
                 </a>
               </li>
-               <li class="nav-item">
-                <a href="<?=base_url('usuarios/listadoDT')?>" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listado DT</p>
-                </a>
-              </li>
               <li class="nav-item">
-                <a href="<?=base_url('usuarios/nuevo')?>" class="nav-link">
+                <a href="<?=base_url('factura/crear')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nuevo</p>
                 </a>
