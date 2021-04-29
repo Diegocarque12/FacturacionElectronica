@@ -1,6 +1,6 @@
 .env
 
-/writable/
+writable/*
 
 */config/development
 */logs/log-*.php
