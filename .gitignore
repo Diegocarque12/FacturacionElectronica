@@ -20,4 +20,3 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
-!application/Helpers
