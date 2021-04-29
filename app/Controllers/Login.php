@@ -8,11 +8,11 @@ class Login extends BaseController
 {
 	public function login()
 	{
-		/*if( is_login() ){
+		if( is_login() ){
 			return redirect()->to(base_url("inicio/inicio"));
-		}else{*/
+		}else{
 			return view('login/login');
-		//}
+		}
 	}
 
 	public function verificar()
