@@ -1,56 +1,28 @@
-CRITICAL - 2021-03-22 08:46:39 --> Undefined property: stdClass::$usuario
-#0 C:\xampp\htdocs\clase11\app\Views\usuarios\listado.php(44): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 44, Array)
-#1 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\View\View.php(220): include('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
-#3 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\Common.php(1217): CodeIgniter\View\View->render('usuarios/listad...', Array, true)
-#4 C:\xampp\htdocs\clase11\app\Controllers\Usuarios.php(19): view('usuarios/listad...', Array)
-#5 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Usuarios->listado()
-#6 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
-#7 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#8 C:\xampp\htdocs\clase11\index.php(44): CodeIgniter\CodeIgniter->run()
-#9 {main}
-CRITICAL - 2021-03-22 08:47:05 --> Undefined property: stdClass::$rol
-#0 C:\xampp\htdocs\clase11\app\Views\usuarios\listado.php(46): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 46, Array)
-#1 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\View\View.php(220): include('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
-#3 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\Common.php(1217): CodeIgniter\View\View->render('usuarios/listad...', Array, true)
-#4 C:\xampp\htdocs\clase11\app\Controllers\Usuarios.php(19): view('usuarios/listad...', Array)
-#5 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Usuarios->listado()
-#6 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
-#7 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#8 C:\xampp\htdocs\clase11\index.php(44): CodeIgniter\CodeIgniter->run()
-#9 {main}
-CRITICAL - 2021-03-22 09:26:06 --> Undefined variable: roles
-#0 C:\xampp\htdocs\clase11\app\Views\usuarios\listado.php(73): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 73, Array)
-#1 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\View\View.php(220): include('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
-#3 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\Common.php(1217): CodeIgniter\View\View->render('usuarios/listad...', Array, true)
-#4 C:\xampp\htdocs\clase11\app\Controllers\Usuarios.php(19): view('usuarios/listad...', Array)
-#5 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Usuarios->listado()
-#6 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
-#7 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#8 C:\xampp\htdocs\clase11\index.php(44): CodeIgniter\CodeIgniter->run()
-#9 {main}
-CRITICAL - 2021-03-22 09:45:45 --> Invalid file: usuarios/listadoDT.php
-#0 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('usuarios/listad...')
-#1 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\Common.php(1217): CodeIgniter\View\View->render('usuarios/listad...', Array, true)
-#2 C:\xampp\htdocs\clase11\app\Controllers\Usuarios.php(39): view('usuarios/listad...', Array)
-#3 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Usuarios->listadoDT()
-#4 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
-#5 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#6 C:\xampp\htdocs\clase11\index.php(44): CodeIgniter\CodeIgniter->run()
-#7 {main}
-CRITICAL - 2021-03-22 10:00:33 --> syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')'
-#0 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('/usuarios/lista...')
-#1 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(816): CodeIgniter\Router\Router->handle('/usuarios/lista...')
-#2 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(385): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
-#3 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#4 C:\xampp\htdocs\clase11\index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2021-03-22 07:10:56 --> Undefined index: usuario
+#0 /opt/lampp/htdocs/CursoPHP/clase9/app/Controllers/Login.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/opt/lampp/htdo...', 29, Array)
+#1 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(936): App\Controllers\Login->verificar()
+#2 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/CursoPHP/clase9/index.php(44): CodeIgniter\CodeIgniter->run()
 #5 {main}
-CRITICAL - 2021-03-22 10:01:11 --> syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')'
-#0 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('/usuarios/lista...')
-#1 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(816): CodeIgniter\Router\Router->handle('/usuarios/lista...')
-#2 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(385): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
-#3 C:\xampp\htdocs\clase11\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#4 C:\xampp\htdocs\clase11\index.php(44): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2021-03-22 07:11:16 --> Undefined index: usuario
+#0 /opt/lampp/htdocs/CursoPHP/clase9/app/Controllers/Login.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/opt/lampp/htdo...', 29, Array)
+#1 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(936): App\Controllers\Login->verificar()
+#2 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/CursoPHP/clase9/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-03-22 07:11:18 --> Undefined index: usuario
+#0 /opt/lampp/htdocs/CursoPHP/clase9/app/Controllers/Login.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/opt/lampp/htdo...', 29, Array)
+#1 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(936): App\Controllers\Login->verificar()
+#2 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/CursoPHP/clase9/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-03-22 07:11:18 --> Undefined index: usuario
+#0 /opt/lampp/htdocs/CursoPHP/clase9/app/Controllers/Login.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/opt/lampp/htdo...', 29, Array)
+#1 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(936): App\Controllers\Login->verificar()
+#2 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /opt/lampp/htdocs/CursoPHP/clase9/vendor/codeigniter4/framework/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /opt/lampp/htdocs/CursoPHP/clase9/index.php(44): CodeIgniter\CodeIgniter->run()
 #5 {main}
