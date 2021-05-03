@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use \DomDocument;
 
 
 use App\Models\ClientesModel;
@@ -231,9 +232,10 @@ class Factura extends BaseController
         $doc->preseveWhiteSpace = false;
         $doc->loadXml($stringXML);
         $doc->save($salida);
-        if ($doc->saveXML()) {
+        return $doc->saveXML();
+        /*if ($doc->saveXML()) {
            $firmar = $this->firmarXml($clave);
-        }
+        }*/
         
     }
 
