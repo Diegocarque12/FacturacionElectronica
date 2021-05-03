@@ -234,10 +234,6 @@ class Factura extends BaseController
         if ($doc->saveXML()) {
            $firmar = $this->firmarXml($clave);
         }
-<<<<<<< Updated upstream
-    }//Fin de generarXML
-=======
-        
     }//Fin de generarXML
 
     private function validarXml($xml64){
@@ -318,7 +314,6 @@ class Factura extends BaseController
             $doc->save($salida);
         }
     }//Fin de validarClave
->>>>>>> Stashed changes
 
     public function token(){
         $data = array(
