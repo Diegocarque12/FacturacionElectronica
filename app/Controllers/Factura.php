@@ -239,6 +239,32 @@ class Factura extends BaseController
         
     }
 
+    
+    public function token(){
+        $data = array(
+            'client_id' => getenv('factura.clientID'),
+            'client_secret' => '',
+            'grant_type' => 'password',
+            'username' => getenv('factura.userToken'),
+            'password' => getenv('factura.userPass')
+        );
+
+        $curl= curl_init(getenv('factura.tokenURL'));
+        curl_setopt($curl, CURLOPT_HEADER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_HEADER, 'Content-Type: application/x-www-form-urlencoded');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+
+        $response= curl_exec($curl);
+        $respuesta= json_decode($response);
+        $status= curl_getinfo($curl);
+        curl_close($curl);
+        return $respuesta->access_token;
+    }
+
 
 	
 
