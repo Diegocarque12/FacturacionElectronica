@@ -234,10 +234,8 @@ class Factura extends BaseController
         if ($doc->saveXML()) {
            $firmar = $this->firmarXml($clave);
         }
-        
-    }
+    }//Fin de generarXML
 
-    
     public function token(){
         $data = array(
             'client_id' => getenv('factura.clientID'),
