@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\ClientesModel;
 use App\Models\ConsecutivosModel;
 use App\Models\EmpresasModel;
+use App\Models\DocumentosModel;
 
 class Factura extends BaseController
 {
