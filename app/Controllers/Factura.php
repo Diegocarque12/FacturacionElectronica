@@ -239,9 +239,7 @@ class Factura extends BaseController
         }*/
         
     }
-
-        }
-    }//Fin de generarXML
+    //Fin de generarXML
 
     private function validarXml($xml64){
         $leer= json_encode(simplexml_load_string(base64_decode($xml64)));
