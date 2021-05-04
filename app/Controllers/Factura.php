@@ -142,14 +142,11 @@ class Factura extends BaseController
         curl_close($curl);
         return $respuesta->access_token;
 <<<<<<< HEAD
-<<<<<<< HEAD
     }//Fin de token
 
     //Firmar un archivo XML
     private function firmarXml($clave){
 =======
-=======
->>>>>>> parent of 9c601c1 (Merge pull request #11 from Diegocarque12/validarXML)
     }
 
 
