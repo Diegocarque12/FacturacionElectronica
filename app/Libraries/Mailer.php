@@ -14,7 +14,6 @@ class Mailer extends PHPMailer
         try {
             $mail->setFrom($data['from'], $name);
 
-
             if(is_array($data['correo'])) {
                 foreach ($data['correo'] as $value) {
                     $mail->AddAddress($value);
