@@ -8,8 +8,6 @@ use \App\Libraries\Pdf;
 use \App\Libraries\Myqr;
 use \App\Libraries\Mailer;
 
-use \App\Libraries\Firmador;
-
 use App\Models\ClientesModel;
 use App\Models\ConsecutivosModel;
 use App\Models\EmpresasModel;
@@ -622,11 +620,6 @@ class Factura extends BaseController
 
     //Firmar un archivo XML
     private function firmarXml($clave){
-        $p12= getenv('factura.p12');
-    }
-
-
-	private function firmarXml($clave){
         $p12=getenv('factura.p12');
         $pin=getenv('factura.pin');
 

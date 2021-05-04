@@ -816,8 +816,7 @@ class DocumentosModel extends Model
             "fecha_envio" => $this->fecha_envio,
             "fecha_valido" => $this->fecha_valido,
         );
-        $query->insert($data);
-        return $this->db->insertID();
+        return $query->insert($data);
     }//Fin de insertarDocumento
 
     //Actualizar el envio del documento
@@ -829,8 +828,7 @@ class DocumentosModel extends Model
             "fecha_envio" => $this->fecha_envio,
         );
         $query->where('id_documento', $this->id_documento);
-        $query->update($data);
-        return $this->db->affectedRows();
+        return $query->update($data);
     }//Fin de actualizarEnvio
 
     //Actualizar el estado de validacion de un documento
@@ -842,7 +840,6 @@ class DocumentosModel extends Model
             "fecha_valido" => $this->fecha_valido,
         );
         $query->where('id_documento', $this->id_documento);
-        $query->update($data);
-        return $this->db->affectedRows();
+        return $query->update($data);
     }//Fin de actualizarEstado
 }//Fin del modelo de documentos
