@@ -755,6 +755,7 @@ class DocumentosModel extends Model
         return $query->get()->getRow();
     }//Fin de selectDocumentoClave
 
+<<<<<<< HEAD
     //Insertar documento
     public function insertarDocumento() {
         $query = $this->db->table($this->tabla);
@@ -819,6 +820,8 @@ class DocumentosModel extends Model
         return $query->insert($data);
     }//Fin de insertarDocumento
 
+=======
+>>>>>>> parent of 9c601c1 (Merge pull request #11 from Diegocarque12/validarXML)
     //Actualizar el envio del documento
     public function actualizarEnvio()
     {
