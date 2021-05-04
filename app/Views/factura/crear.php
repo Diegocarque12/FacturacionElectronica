@@ -64,7 +64,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-1">
+                  <div class="col-md-2">
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -126,6 +126,7 @@
                     <tr>
                       <th>Codigo</th>
                       <th>Detalle</th>
+                      <th>Unid</th>
                       <th>Cantidad</th>
                       <th>Precio</th>
                       <th>Neto</th>
@@ -148,6 +149,12 @@
                       <td>
                         <input class="form-control" type="text" name="detalle[]" required>
                       </td>
+                      <td width="6%">
+                        <select class="form-control" name="unidad[]" required>
+                          <option value="Unid">Un</option>
+                          <option value="Sp">Sp</option>
+                        </select>
+                      </td>
                       <td width="5%">
                         <input class="form-control cantidad calcular" min="1" type="number" name="cantidad[]" required>
                       </td>
@@ -160,19 +167,19 @@
                       <td width="8%">
                         <input class="form-control descP calcular" max="100" min="0" type="number" value="0">
                       </td>
-                      <td width="10%">
+                      <td width="8%">
                         <input class="form-control descM" type="number" name="monto_descuento[]"  readonly required>
                       </td>
-                      <td width="10%">
+                      <td width="8%">
                         <input class="form-control subtotal" type="number" name="sub_total[]" readonly required>
                       </td>
                       <td width="8%">
                         <input class="form-control impP" type="number"  value="13" name="tarifa[]" readonly required>
                       </td>
-                      <td width="10%">
+                      <td width="8%">
                         <input class="form-control impM" type="number" readonly name="monto_impuesto[]" required>
                       </td>
-                      <td width="10%">
+                      <td width="8%">
                         <input class="form-control totalL" type="number"  readonly  name="total_linea[]" required>
                       </td>
                       <td>
@@ -184,27 +191,27 @@
                   </tbody>
                   <tfoot class="table-sm sinBorde" >
                     <tr>
-                      <td colspan="10" align="right">Neto</td>
+                      <td colspan="11" align="right">Neto</td>
                       <td align="right" class="lblNeto">0</td>
                     </tr>
                     <tr>
-                      <td colspan="10" align="right">Descuentos</td>
+                      <td colspan="11" align="right">Descuentos</td>
                       <td align="right" class="lblDescuentos">0</td>
                     </tr>
                     <tr>
-                      <td colspan="10" align="right">Subtotal</td>
+                      <td colspan="11" align="right">Subtotal</td>
                       <td align="right" class="lblSubtotal">0</td>
                     </tr>
                     <tr>
-                      <td colspan="10" align="right">IVA</td>
+                      <td colspan="11" align="right">IVA</td>
                       <td align="right" class="lblIVA">0</td>
                     </tr>
                     <tr>
-                      <td colspan="10" align="right">Exnonerado</td>
+                      <td colspan="11" align="right">Exnonerado</td>
                       <td align="right" class="lblExnonerado">0</td>
                     </tr>
                     <tr>
-                      <td colspan="9"><input type="text" name="" placeholder="Observaciones" class="form-control bg-gray color-palette text-white"></td>
+                      <td colspan="10"><input type="text" name="notas" placeholder="Observaciones" class="form-control bg-gray color-palette text-white"></td>
                       <td align="right">Total</td>
                       <td align="right" class="lblTotal">0</td>
                     </tr>
@@ -214,7 +221,7 @@
               </div>
               <div class="row">
                 <div class="col-12" style="text-align: center;">
-                  <button  type="submit" class="btn btn-success"> <i class="fas fa-check-circle"></i> Generar Documento</button>
+                  <button id="btnGenerarFactura"  type="submit" class="btn btn-success"> <i class="fas fa-check-circle"></i> Generar Documento</button>
                 </div>
               </div>
             </div>
@@ -222,10 +229,31 @@
         </div>  
       </div>
     </form>
-
-
-
   </div>
+</div>
+
+<div class="modal fade" id="modalRespuesta">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Documento</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2>Clave: </h2> <h2 id="lblClave"></h2>
+        <b>Enviado: </b> <label id="lblEnviado"></label><br>
+        <b>Validado: </b> <label id="lblValidado"></label><br>
+        <b>Validar: </b> <div id="divValidar"></div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <a href="<?=base_url('facturar/listado')?>"><button type="button" class="btn btn-primary" data-dismiss="modal">Listado</button></a>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
 
 <?= $this->endSection() ?>
@@ -319,19 +347,59 @@ $(document).on('click','.eliminarLinea',function(){
   totales();
 });
 
-/*
+
+
 $("#frmFacturar").on('submit', function(e){
-    e.preventDefault();
+  $("#btnGenerarFactura").attr('disabled', true);
+  e.preventDefault();
+  Pace.track(function () {
     $.ajax({
       "url": "<?=base_url()?>/factura/generarFactura",
       "method": "post",
       "data": $('#frmFacturar').serialize(),
       "dataType": "json",
     }).done(function (response) {
-      alert(response);
+      $("#modalRespuesta").modal('show');
+
+    }).always(function (response) {
+        $("#lblClave").text(response.clave);
+        //si fue enviado
+        $("#lblEnviado").text(response.enviar);
+        // si fuue valido
+        $("#lblValidado").text(response.validar_estado);
+        if (response.validar_mensaje==3) {
+          alert("documento rechazado");
+        }
+
+        $("#divValidar").html('');
+        if (response.validar_estado=="procesando") {
+          $("#divValidar").append('<button class="btn btn-warning btn-sm reValidar" value="'+response.clave+'">Validar</button>');
+        }
+
+
+
+      $("#btnGenerarFactura").attr('disabled', false);
     });
   });
-*/
+});
+
+$(document).on('click','.reValidar',function(){
+  Pace.track(function () {
+    $.ajax({
+      "url": "<?=base_url()?>/facturar/validarXmlDesatendido",
+      "method": "post",
+      "data": {"clave": this.value},
+      "dataType": "json",
+    }).done(function (response) {
+      $("#lblValidado").text(response.ind_estado);
+      $("#divValidar").html(response.ind_estado);
+    }).always(function (response) {
+      $("#btnGenerarFactura").attr('disabled', false);
+    });
+  });
+});
+
+
 
 </script>
 <?= $this->endSection() ?>

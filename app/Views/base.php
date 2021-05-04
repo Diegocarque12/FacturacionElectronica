@@ -15,7 +15,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?=base_url()?>/plantilla/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url()?>/plantilla/dist/css/adminlte.min.css">
-  <link rel="icon" type="image/png" href="<?=base_url()?>/plantilla/dist/img/"> <!-- Hacerlo con Imgur -->
+  <link rel="icon" type="image/png" href="https://i.imgur.com/g3bijUl.png"> 
+
+  <link rel="stylesheet" href="<?=base_url()?>/plantilla/plugins/pace/themes/red/pace-theme-corner-indicator.css">
+
   <?= $this->renderSection('style'); ?>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -223,6 +226,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?=base_url()?>/plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=base_url()?>/plantilla/dist/js/adminlte.min.js"></script>
+
+<script src="<?=base_url()?>/plantilla/plugins/pace/pace.min.js"></script>
 
 <?= $this->renderSection('script'); ?>
 </body>
