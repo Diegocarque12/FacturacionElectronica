@@ -358,17 +358,6 @@ class Factura extends BaseController
         //firma y devuelve el base64_encode();
         $xml64 = $Firmador->firmarXml($p12,$pin,$input,$Firmador::TO_XML_FILE,$ruta);
 
-        //enviar
-        $enviar = json_decode($this->enviarXml($xml64));
-        if ($enviar->status=="200" || $enviar->status=="201" || $enviar->status=="202") {
-            sleep(4);
-            $validar = $this->validarXml($xml64);
-            $estado= json_decode($validar,true);
-            echo "$clave"." ->".$estado['xml']['ind-estado'];
-
-        }else{
-            echo $enviar->respuesta;
-        }
     }
 
 	
