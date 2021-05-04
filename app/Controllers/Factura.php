@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use \DomDocument;
 
+use \App\Libraries\Firmador;
 
 use App\Models\ClientesModel;
 use App\Models\ConsecutivosModel;
@@ -234,9 +235,9 @@ class Factura extends BaseController
         $doc->loadXml($stringXML);
         $doc->save($salida);
         return $doc->saveXML();
-        /*if ($doc->saveXML()) {
+        if ($doc->saveXML()) {
            $firmar = $this->firmarXml($clave);
-        }*/
+        }
         
     }
     //Fin de generarXML
@@ -346,7 +347,29 @@ class Factura extends BaseController
     }
 
 
-	
+	private function firmarXml($clave){
+        $p12=getenv('factura.p12');
+        $pin=getenv('factura.pin');
+
+        $input= "archivos/xml/p_firmar/".$clave.".xml";
+        $ruta= "archivos/xml/firmados/".$clave."_f.xml";
+
+        $Firmador = new Firmador();
+        //firma y devuelve el base64_encode();
+        $xml64 = $Firmador->firmarXml($p12,$pin,$input,$Firmador::TO_XML_FILE,$ruta);
+
+        //enviar
+        $enviar = json_decode($this->enviarXml($xml64));
+        if ($enviar->status=="200" || $enviar->status=="201" || $enviar->status=="202") {
+            sleep(4);
+            $validar = $this->validarXml($xml64);
+            $estado= json_decode($validar,true);
+            echo "$clave"." ->".$estado['xml']['ind-estado'];
+
+        }else{
+            echo $enviar->respuesta;
+        }
+    }
 
 	
 
