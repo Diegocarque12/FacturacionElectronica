@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use \DomDocument;
 
+use \App\Libraries\Firmador;
 
 use App\Models\ClientesModel;
 use App\Models\ConsecutivosModel;
@@ -86,7 +87,7 @@ class Factura extends BaseController
     }
     
 	public function generarXml() {
-        $id_factura="112";
+        $id_factura="116";
         $factura= str_pad($id_factura,10,"0",STR_PAD_LEFT);
         $surcusal= "001";
         $pv="00001";
@@ -233,15 +234,86 @@ class Factura extends BaseController
         $doc->preseveWhiteSpace = false;
         $doc->loadXml($stringXML);
         $doc->save($salida);
-        return $doc->saveXML();
-        /*if ($doc->saveXML()) {
+       return $doc->saveXML();
+        /*  if ($doc->saveXML()) {
            $firmar = $this->firmarXml($clave);
-        }*/
+           }*/
         
     }
     //Fin de generarXML
 
+
+    //token 
+    public function token(){
+        $data = array(
+            'client_id' => getenv('factura.clientID'),
+            'client_secret' => '',
+            'grant_type' => 'password',
+            'username' => getenv('factura.userToken'),
+            'password' => getenv('factura.userPass')
+        );
+
+        $curl= curl_init(getenv('factura.tokenURL'));
+        curl_setopt($curl, CURLOPT_HEADER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_HEADER, 'Content-Type: application/x-www-form-urlencoded');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+
+        $response= curl_exec($curl);
+        $respuesta= json_decode($response);
+        $status= curl_getinfo($curl);
+        curl_close($curl);
+        return $respuesta->access_token;
+    }
+    
+    //enviar xml 
+    private function enviarXml($xml64){
+
+        $leer= json_encode(simplexml_load_string(base64_decode($xml64)));
+        $json= json_decode($leer);
+
+        $data= json_encode(array(
+            "clave"=> $json->Clave,
+            "fecha" => date('c'),
+            "emisor"=>array(
+                "tipoIdentificacion" => $json->Emisor->Identificacion->Tipo,
+                "numeroIdentificacion" => $json->Emisor->Identificacion->Numero,
+            ),
+            "receptor" =>array(
+                "tipoIdentificacion" => $json->Receptor->Identificacion->Tipo,
+                "numeroIdentificacion" => $json->Receptor->Identificacion->Numero,
+            ),
+            "comprobanteXml"=> $xml64
+        ));
+        //token
+        $header= array(
+            "Authorization: bearer ".$this->token(),
+            "Content-Type: application/json",
+        );
+
+        $curl = curl_init(getenv('factura.urlRecepcion'));
+        curl_setopt($curl, CURLOPT_HEADER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+        //ejecutar el curl
+        $respuesta= curl_exec($curl);
+        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
+        curl_close($curl);
+        //obtener respuesta
+       return json_encode(array('respuesta' =>$respuesta, 'status'=>$status ));      
+
+    }
+
     private function validarXml($xml64){
+        print_r($xml64);
         $leer= json_encode(simplexml_load_string(base64_decode($xml64)));
         $json= json_decode($leer);
         //token
@@ -320,30 +392,9 @@ class Factura extends BaseController
         }
     }//Fin de validarClave
 
-    public function token(){
-        $data = array(
-            'client_id' => getenv('factura.clientID'),
-            'client_secret' => '',
-            'grant_type' => 'password',
-            'username' => getenv('factura.userToken'),
-            'password' => getenv('factura.userPass')
-        );
+   
 
-        $curl= curl_init(getenv('factura.tokenURL'));
-        curl_setopt($curl, CURLOPT_HEADER, true);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_HEADER, 'Content-Type: application/x-www-form-urlencoded');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
-
-        $response= curl_exec($curl);
-        $respuesta= json_decode($response);
-        $status= curl_getinfo($curl);
-        curl_close($curl);
-        return $respuesta->access_token;
-    }
+   
 
 
 	
