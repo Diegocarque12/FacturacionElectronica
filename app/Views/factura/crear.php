@@ -320,7 +320,6 @@ $(document).on('click','.eliminarLinea',function(){
 });
 
 /*
-
 $("#frmFacturar").on('submit', function(e){
     e.preventDefault();
     $.ajax({
