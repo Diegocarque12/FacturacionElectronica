@@ -755,6 +755,71 @@ class DocumentosModel extends Model
         return $query->get()->getRow();
     }//Fin de selectDocumentoClave
 
+    //Insertar documento
+    public function insertarDocumento() {
+        $query = $this->db->table($this->tabla);
+    
+        $data = array(
+            "id_documento" => $this->id_documento,    
+            "consecutivo" => $this->consecutivo,
+            "tipo_documento" => $this->tipo_documento,  
+            "clave" => $this->clave,   
+            "codigo_seguridad" => $this->codigo_seguridad,  
+            "fecha" => $this->fecha,  
+            "emisor_cedula" => $this->emisor_cedula, 
+            "emisor_nombre" => $this->emisor_nombre,  
+            "emisor_tipo" => $this->emisor_tipo,
+            "emisor_comercial" => $this->emisor_comercial,  
+            "emisor_id_provincia" => $this->emisor_id_provincia,  
+            "emisor_id_canton" => $this->emisor_id_canton,
+            "emisor_id_distrito" => $this->emisor_id_distrito,
+            "emisor_id_barrio" => $this->emisor_id_barrio, 
+            "emisor_otras_senas" => $this->emisor_otras_senas,
+            "emisor_cod" => $this->emisor_cod,
+            "emisor_telefono" => $this->emisor_telefono,
+            "emisor_correo" => $this->emisor_correo,
+            "receptor_nombre" => $this->receptor_nombre,
+            "receptor_cedula" => $this->receptor_cedula,
+            "receptor_tipo" => $this->receptor_tipo,  
+            "receptor_comercial" => $this->receptor_comercial,
+            "receptor_id_provincia" => $this->receptor_id_provincia, 
+            "receptor_id_canton" => $this->receptor_id_canton,
+            "receptor_id_distrito" => $this->receptor_id_distrito,   
+            "receptor_id_barrio" => $this->receptor_id_barrio,
+            "receptor_otras_senas" => $this->receptor_otras_senas,   
+            "receptor_cod" => $this->receptor_cod,  
+            "receptor_telefono" => $this->receptor_telefono, 
+            "receptor_correo" => $this->receptor_correo,
+            "condicion_venta" => $this->condicion_venta,
+            "plazo_credito" => $this->plazo_credito,  
+            "medio_pago" => $this->medio_pago,
+            "moneda" => $this->moneda,
+            "tipo_cambio" => $this->tipo_cambio,
+            "servicios_gravados" => $this->servicios_gravados,
+            "servicios_exentos" => $this->servicios_exentos, 
+            "servicios_exonerados" => $this->servicios_exonerados, 
+            "mercancias_gravadas" => $this->mercancias_gravadas,
+            "mercancias_exentas" => $this->mercancias_exentas,
+            "mercancias_exoneradas" => $this->mercancias_exoneradas, 
+            "total_gravado" => $this->total_gravado, 
+            "total_exento" => $this->total_exento,  
+            "total_exonerado" => $this->total_exonerado,
+            "total_venta" => $this->total_venta,
+            "total_descuentos" => $this->total_descuentos,  
+            "total_venta_neta" => $this->total_venta_neta,   
+            "total_impuestos" => $this->total_impuestos,
+            "total_comprobante" => $this->total_comprobante, 
+            "notas" => $this->notas,
+            "id_usuario" => $this->id_usuario,
+            "envio_atv" => $this->envio_atv,
+            "valido_atv" => $this->valido_atv,
+            "fecha_envio" => $this->fecha_envio,
+            "fecha_valido" => $this->fecha_valido,
+        );
+        $query->insert($data);
+        return $this->db->insertID();
+    }//Fin de insertarDocumento
+
     //Actualizar el envio del documento
     public function actualizarEnvio()
     {
