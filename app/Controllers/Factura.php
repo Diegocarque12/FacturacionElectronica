@@ -313,7 +313,6 @@ class Factura extends BaseController
     }
 
     private function validarXml($xml64){
-        print_r($xml64);
         $leer= json_encode(simplexml_load_string(base64_decode($xml64)));
         $json= json_decode($leer);
         //token
@@ -378,7 +377,6 @@ class Factura extends BaseController
         //obtener respuesta
 
         $xml= json_decode($response, true);
-        var_dump($xml);
 
         if (isset($xml['respuesta-xml'])) {
             $respuesta_xml= $xml['respuesta-xml'];
