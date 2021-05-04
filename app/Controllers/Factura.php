@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Controllers;
+
 use \DomDocument;
+use \App\Libraries\Firmador;
+use \App\Libraries\Pdf;
+use \App\Libraries\Myqr;
+use \App\Libraries\Mailer;
 
 use \App\Libraries\Firmador;
 
@@ -25,223 +30,16 @@ class Factura extends BaseController
 
     public function listado()
 	{
-        $ClientesModel= new ClientesModel();
+        $documentosModel= new DocumentosModel();
 
         $data= array(
-            'clientes' => $ClientesModel->selectClientes(), 
+            'documento' => $documentosModel->selectDocumentos(),
         );
 
 		return view('factura/listado', $data);
 	}
 
-    private function totales($detalles){
-        $totalServGravados=0;
-        $totalServExentos=0;
-        $totalServExonerado=0;
-        $totalMercanciasGravadas=0;
-        $totalMercanciasExentas=0;
-        $totalMercExonerada=0;
-        $totalGravado=0;
-        $totalExento=0;
-        $totalExonerado=0;
-        $totalVenta=0;
-        $totalDescuentos=0;
-        $totalVentaNeta=0;
-        $totalImpuesto=0;
-        $totalComprobante=0;
-
-        foreach ($detalles as $key => $linea) {
-            //es un servicio
-            if ($linea->unidad=="Sp" || $linea->unidad=="Spe") {
-                //todos los servicios son gravados
-                $totalServGravados+= ($linea->precio*$linea->cantidad);
-            }else{
-                 //todas las mercancias son gravados
-                $totalMercanciasGravadas+=($linea->precio*$linea->cantidad);
-            }
-            //todas las mercancias y servicios son gravados
-            $totalGravado+= ($linea->precio*$linea->cantidad);
-            $totalVenta+=($linea->precio*$linea->cantidad);
-            $totalVentaNeta+=($linea->precio*$linea->cantidad);
-            $totalImpuesto+=((($linea->precio*$linea->cantidad) * $linea->tarifa)/100);
-            $totalComprobante+=((($linea->precio*$linea->cantidad) * $linea->tarifa)/100) +($linea->precio*$linea->cantidad);
-        }
-
-        return json_encode(array(
-            'totalServGravados' => $totalServGravados, 
-            'totalServExentos' => $totalServExentos, 
-            'totalServExonerado' => $totalServExonerado, 
-            'totalMercanciasGravadas' => $totalMercanciasGravadas, 
-            'totalMercanciasExentas' => $totalMercanciasExentas, 
-            'totalMercExonerada' => $totalMercExonerada, 
-            'totalGravado' => $totalGravado, 
-            'totalExento' => $totalExento, 
-            'totalExonerado' => $totalExonerado, 
-            'totalVenta' => $totalVenta, 
-            'totalDescuentos' => $totalDescuentos, 
-            'totalVentaNeta' => $totalVentaNeta, 
-            'totalImpuesto' => $totalImpuesto, 
-            'totalComprobante' => $totalComprobante, 
-        ));
-
-    }
-    
-	public function generarXml() {
-        $id_factura="112";
-        $factura= str_pad($id_factura,10,"0",STR_PAD_LEFT);
-        $surcusal= "001";
-        $pv="00001";
-        $tipoDocumento="01";
-
-        //cosecutivo autogenerado
-        $consecutivo=$surcusal.$pv.$tipoDocumento.$factura;
-
-        $cod="506";
-        $ced="402160653";
-        $cedulaEmisor= str_pad($ced,12,"0",STR_PAD_LEFT);
-        $situacion="1";
-
-        $codSeguridad= substr(str_shuffle("0123456789"), 0, 8);
-
-        $clave= $cod.date('d').date('m').date('y').$cedulaEmisor.$consecutivo.$situacion.$codSeguridad;
-
-        $json= '{
-                  "detalles": [
-                    {
-                      "detalle": "Piña",
-                      "codigo": "8344900000000",
-                      "unidad": "Unid",
-                      "precio": 1000,
-                      "cantidad": 2,
-                      "tarifa": 13
-                    }
-                  ]
-                }';
-        $jsonListo= json_decode($json);
-        $totales= json_decode($this->totales($jsonListo->detalles));
-
-        $stringXML='<?xml version="1.0" encoding="utf-8"?>
-        <FacturaElectronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica">
-            <Clave>'.$clave.'</Clave>
-            <CodigoActividad>721001</CodigoActividad>
-            <NumeroConsecutivo>'.$consecutivo.'</NumeroConsecutivo>
-            <FechaEmision>'.date("c").'</FechaEmision>
-            <Emisor>
-                <Nombre>Joseph Gabriel Rodriguez Roman</Nombre>
-                <Identificacion>
-                    <Tipo>01</Tipo>
-                    <Numero>402160653</Numero>
-                </Identificacion>
-                <NombreComercial>JR</NombreComercial>
-                <Ubicacion>
-                    <Provincia>4</Provincia>
-                    <Canton>02</Canton>
-                    <Distrito>02</Distrito>
-                    <Barrio>05</Barrio>
-                    <OtrasSenas>La maquina</OtrasSenas>
-                </Ubicacion>
-                <Telefono>
-                    <CodigoPais>506</CodigoPais>
-                    <NumTelefono>88888888</NumTelefono>
-                </Telefono>
-                <CorreoElectronico>jrodriguez081192@gmail.com</CorreoElectronico>
-            </Emisor>
-            <Receptor>
-                <Nombre>Taller Gonzáles S.A</Nombre>
-                <Identificacion>
-                    <Tipo>02</Tipo>
-                    <Numero>3101143237</Numero>
-                </Identificacion>
-                <NombreComercial/>
-                <Ubicacion>
-                    <Provincia>2</Provincia>
-                    <Canton>01</Canton>
-                    <Distrito>13</Distrito>
-                    <Barrio>05</Barrio>
-                    <OtrasSenas>500M SUR DEL RESTAURANTE FIESTA DEL MAÍZ</OtrasSenas>
-                </Ubicacion>
-                <Telefono>
-                    <CodigoPais>506</CodigoPais>
-                    <NumTelefono>24874310</NumTelefono>
-                </Telefono>
-                <CorreoElectronico>FACTURAELECTRONICA@TAGOSA.COM</CorreoElectronico>
-            </Receptor>
-            <CondicionVenta>01</CondicionVenta>
-            <PlazoCredito>0</PlazoCredito>
-            <MedioPago>04</MedioPago>
-            <DetalleServicio>';
-
-            
-            
-            foreach ($jsonListo->detalles as $key => $linea) {
-                $montoTotal=($linea->cantidad * $linea->precio);
-                $descuentos=0;
-                $subTotal=(($linea->cantidad*$linea->precio)-$descuentos);
-                $impuesto=(($subTotal*$linea->tarifa)/100);
-                $montoTotalLinea= ($subTotal+$impuesto);
-
-                $stringXML.='<LineaDetalle>
-                    <NumeroLinea>'.($key+1).'</NumeroLinea>
-                    <Codigo>'.$linea->codigo.'</Codigo>
-                    <Cantidad>'.$linea->cantidad.'</Cantidad>
-                    <UnidadMedida>'.$linea->unidad.'</UnidadMedida>
-                    <Detalle>'.$linea->detalle.'</Detalle>
-                    <PrecioUnitario>'.$linea->precio.'</PrecioUnitario>
-                    <MontoTotal>'.$montoTotal.'</MontoTotal>
-                    <SubTotal>'.$subTotal.'</SubTotal>
-                    <Impuesto>
-                        <Codigo>01</Codigo>
-                        <CodigoTarifa>08</CodigoTarifa>
-                        <Tarifa>'.$linea->tarifa.'</Tarifa>
-                        <Monto>'.$impuesto.'</Monto>  
-                    </Impuesto>
-                    
-                    <ImpuestoNeto>'.$impuesto.'</ImpuestoNeto>
-                    <MontoTotalLinea>'.$montoTotalLinea.'</MontoTotalLinea>
-                </LineaDetalle>';
-            }
-             
-            $stringXML.='</DetalleServicio>
-
-            <ResumenFactura>
-                <CodigoTipoMoneda>
-                    <CodigoMoneda>CRC</CodigoMoneda>
-                    <TipoCambio>1</TipoCambio>
-                </CodigoTipoMoneda>
-                <TotalServGravados>'.$totales->totalServGravados.'</TotalServGravados>
-                <TotalServExentos>'.$totales->totalServExentos.'</TotalServExentos>
-                <TotalServExonerado>'.$totales->totalServExonerado.'</TotalServExonerado>
-                <TotalMercanciasGravadas>'.$totales->totalMercanciasGravadas.'</TotalMercanciasGravadas>
-                <TotalMercanciasExentas>'.$totales->totalMercanciasExentas.'</TotalMercanciasExentas>
-                <TotalMercExonerada>'.$totales->totalMercExonerada.'</TotalMercExonerada>
-                <TotalGravado>'.$totales->totalGravado.'</TotalGravado>
-                <TotalExento>'.$totales->totalExento.'</TotalExento>
-                <TotalExonerado>'.$totales->totalExonerado.'</TotalExonerado>
-                <TotalVenta>'.$totales->totalVenta.'</TotalVenta>
-                <TotalDescuentos>'.$totales->totalDescuentos.'</TotalDescuentos>
-                <TotalVentaNeta>'.$totales->totalVentaNeta.'</TotalVentaNeta>
-                <TotalImpuesto>'.$totales->totalImpuesto.'</TotalImpuesto>
-                <TotalComprobante>'.$totales->totalComprobante.'</TotalComprobante>
-            </ResumenFactura>
-            <Otros>
-                <OtroTexto></OtroTexto>
-            </Otros>
-        </FacturaElectronica>
-        ';
-
-        $salida= "archivos/xml/p_firmar/$clave.xml";
-        $doc = new DomDocument();
-        $doc->preseveWhiteSpace = false;
-        $doc->loadXml($stringXML);
-        $doc->save($salida);
-        return $doc->saveXML();
-        if ($doc->saveXML()) {
-           $firmar = $this->firmarXml($clave);
-        }
-        
-    }
-    //Fin de generarXML
-
+    //Validar archivo XML
     private function validarXml($xml64){
         $leer= json_encode(simplexml_load_string(base64_decode($xml64)));
         $json= json_decode($leer);
@@ -282,6 +80,7 @@ class Factura extends BaseController
 
     }//Fin de validarXML
 
+    //Validar documento por clave
     public function validarClave(){
         $clave= $_POST['clave'];
 

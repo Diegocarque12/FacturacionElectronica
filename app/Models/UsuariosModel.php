@@ -65,7 +65,10 @@ class UsuariosModel extends Model{
 
         $query = $this->db->table($this->tabla);
         $query->where('usuario', $this->usuario);
-        return $query->get()->getRow();
+
+        $result = $query->get()->getRow();
+
+        return $result;
     }
 
 

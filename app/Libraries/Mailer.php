@@ -21,6 +21,17 @@ class Mailer extends PHPMailer
             }else{
                 $mail->AddAddress($data['correo']);
             }
+
+            if(isset($data['adjunto'])){
+                if(is_array($data['adjunto'])) {
+                    foreach ($data['adjunto'] as $archivo) {
+                        $mail->addAttachment($archivo);
+                    }
+                }else{
+                    $mail->addAttachment($data['adjunto']);
+                }
+            }
+
             $mail->isSMTP();
             $mail->Host = "mail.jrtec.cl"; // SMTP a utilizar.
             $mail->SMTPAuth = TRUE;
@@ -34,19 +45,6 @@ class Mailer extends PHPMailer
             $mail->Subject = $data['asunto'];
 
             $mail->Body = $data['cuerpo'];
-
-            if(isset($data['adjunto'])){
-                if(isset($data['nombre_adjunto'])){
-                    $mail->addAttachment($data['adjunto'], $data['nombre_adjunto']);
-                }else{
-                    $mail->addAttachment($data['adjunto']);
-                }
-            }
-            if(isset($data['tempArchivos']) && isset($data['nombreArchivos'])){
-                foreach ($data['tempArchivos'] as $key => $value) {
-                    $mail->addAttachment($value, $data['nombreArchivos'][$key]);
-                }
-            }
 
             $exito = $mail->send();
             if($exito){
