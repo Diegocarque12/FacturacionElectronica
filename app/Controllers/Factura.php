@@ -164,44 +164,6 @@ class Factura extends BaseController
 
     }
 
-    /*public function validarPorClave(){
-        $clave= $_POST['clave'];
-        $header= array(
-            "Authorization: bearer ".$this->token(),
-            "Content-Type: application/json",
-        );
-
-
-        $curl = curl_init(getenv('factura.urlRecepcion')."/".$clave);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-
-        //ejecutar el curl
-        $response= curl_exec($curl);
-        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
-        curl_close($curl);
-        //obtener respuesta
-
-        $xml= json_decode($response, true);
-        //var_dump($xml);
-
-        if (isset($xml['respuesta-xml'])) {
-            $respuesta_xml= $xml['respuesta-xml'];
-            $stringXML= base64_decode($respuesta_xml);
-
-            $salida="archivos/xml/respuesta/".$clave.".xml";
-            $doc = new DomDocument();
-            $doc->preseveWhiteSpace = false;
-            $doc->loadXml($stringXML);
-            $doc->save($salida);
-        }
-    }*/
-
     public function facturaPDF(){
         //is Login
         $clave= $this->request->uri->getSegment(3);
