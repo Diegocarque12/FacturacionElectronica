@@ -8,8 +8,6 @@ use \App\Libraries\Pdf;
 use \App\Libraries\Myqr;
 use \App\Libraries\Mailer;
 
-use \App\Libraries\Firmador;
-
 use App\Models\ClientesModel;
 use App\Models\ConsecutivosModel;
 use App\Models\EmpresasModel;
@@ -479,6 +477,129 @@ class Factura extends BaseController
        }//Fin del else
     }//Fin de facturaPDF
 
+    //Validar documento por clave
+    public function validarClave(){
+        $clave= $_POST['clave'];
+
+        $header= array(
+            "Authorization: bearer ".$this->token(),
+            "Content-Type: application/json",
+        );
+
+
+        $curl = curl_init(getenv('factura.urlRecepcion')."/".$clave);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+
+        //ejecutar el curl
+        $response= curl_exec($curl);
+        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
+        curl_close($curl);
+        //obtener respuesta
+
+        $xml= json_decode($response, true);
+        var_dump($xml);
+
+        if (isset($xml['respuesta-xml'])) {
+            $respuesta_xml= $xml['respuesta-xml'];
+            $stringXML= base64_decode($respuesta_xml);
+
+            $salida="archivos/xml/respuesta/".$clave.".xml";
+            $doc = new DomDocument();
+            $doc->preseveWhiteSpace = false;
+            $doc->loadXml($stringXML);
+            $doc->save($salida);
+        }
+    }//Fin de validarClave
+
+    //Generae un TOKEN para la sesion del envío
+    public function token(){
+        $data = array(
+            'client_id' => getenv('factura.clientID'),
+            'client_secret' => '',
+            'grant_type' => 'password',
+            'username' => getenv('factura.userToken'),
+            'password' => getenv('factura.userPass')
+        );
+
+        $curl= curl_init(getenv('factura.tokenURL'));
+        curl_setopt($curl, CURLOPT_HEADER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_HEADER, 'Content-Type: application/x-www-form-urlencoded');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+
+        $response= curl_exec($curl);
+        $respuesta= json_decode($response);
+        $status= curl_getinfo($curl);
+        curl_close($curl);
+        return $respuesta->access_token;
+    }//Fin de token
+
+    //Firmar un archivo XML
+	private function firmarXml($clave){
+        $p12=getenv('factura.p12');
+        $pin=getenv('factura.pin');
+
+        $input= "archivos/xml/p_firmar/".$clave.".xml";
+        $ruta= "archivos/xml/firmados/".$clave."_f.xml";
+
+        $Firmador = new Firmador();
+        //firma y devuelve el base64_encode();
+        $xml64=  $Firmador->firmarXml($p12,$pin,$input,$Firmador::TO_XML_FILE,$ruta);
+        return  $xml64;
+    }//Fin de firmarXML
+
+    //Enviar XML al ministerio de hacienda
+    private function enviarXml($xml64){
+
+        $leer= json_encode(simplexml_load_string(base64_decode($xml64)));
+        $json= json_decode($leer);
+
+        $data= json_encode(array(
+            "clave"=> $json->Clave,
+            "fecha" => date('c'),
+            "emisor"=>array(
+                "tipoIdentificacion" => $json->Emisor->Identificacion->Tipo,
+                "numeroIdentificacion" => $json->Emisor->Identificacion->Numero,
+            ),
+            "receptor" =>array(
+                "tipoIdentificacion" => $json->Receptor->Identificacion->Tipo,
+                "numeroIdentificacion" => $json->Receptor->Identificacion->Numero,
+            ),
+            "comprobanteXml"=> $xml64
+        ));
+        //token
+        $header= array(
+            "Authorization: bearer ".$this->token(),
+            "Content-Type: application/json",
+        );
+
+        $curl = curl_init(getenv('factura.urlRecepcion'));
+        curl_setopt($curl, CURLOPT_HEADER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+        //ejecutar el curl
+        $respuesta= curl_exec($curl);
+        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
+        curl_close($curl);
+        //obtener respuesta
+        return json_encode(array('respuesta' =>$respuesta, 'status'=>$status ));      //echo $status;
+
+    }//Fin de enviarXML
+
     //Generar un documento en PDF por clave
     private function generarPDF($clave){
         $pdf= new Pdf();
@@ -554,131 +675,4 @@ class Factura extends BaseController
 
     }//Fin de validarXML
 
-    //Validar documento por clave
-    public function validarClave(){
-        $clave= $_POST['clave'];
-
-        $header= array(
-            "Authorization: bearer ".$this->token(),
-            "Content-Type: application/json",
-        );
-
-
-        $curl = curl_init(getenv('factura.urlRecepcion')."/".$clave);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-
-        //ejecutar el curl
-        $response= curl_exec($curl);
-        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
-        curl_close($curl);
-        //obtener respuesta
-
-        $xml= json_decode($response, true);
-        var_dump($xml);
-
-        if (isset($xml['respuesta-xml'])) {
-            $respuesta_xml= $xml['respuesta-xml'];
-            $stringXML= base64_decode($respuesta_xml);
-
-            $salida="archivos/xml/respuesta/".$clave.".xml";
-            $doc = new DomDocument();
-            $doc->preseveWhiteSpace = false;
-            $doc->loadXml($stringXML);
-            $doc->save($salida);
-        }
-    }//Fin de validarClave
-
-    //Generae un TOKEN para la sesion del envío
-    public function token(){
-        $data = array(
-            'client_id' => getenv('factura.clientID'),
-            'client_secret' => '',
-            'grant_type' => 'password',
-            'username' => getenv('factura.userToken'),
-            'password' => getenv('factura.userPass')
-        );
-
-        $curl= curl_init(getenv('factura.tokenURL'));
-        curl_setopt($curl, CURLOPT_HEADER, true);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_HEADER, 'Content-Type: application/x-www-form-urlencoded');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
-
-        $response= curl_exec($curl);
-        $respuesta= json_decode($response);
-        $status= curl_getinfo($curl);
-        curl_close($curl);
-        return $respuesta->access_token;
-    }//Fin de token
-
-    //Firmar un archivo XML
-    private function firmarXml($clave){
-        $p12= getenv('factura.p12');
-    }
-
-
-	private function firmarXml($clave){
-        $p12=getenv('factura.p12');
-        $pin=getenv('factura.pin');
-
-        $input= "archivos/xml/p_firmar/".$clave.".xml";
-        $ruta= "archivos/xml/firmados/".$clave."_f.xml";
-
-        $Firmador = new Firmador();
-        //firma y devuelve el base64_encode();
-        $xml64=  $Firmador->firmarXml($p12,$pin,$input,$Firmador::TO_XML_FILE,$ruta);
-        return  $xml64;
-    }//Fin de firmarXML
-
-    //Enviar XML al ministerio de hacienda
-    private function enviarXml($xml64){
-
-        $leer= json_encode(simplexml_load_string(base64_decode($xml64)));
-        $json= json_decode($leer);
-
-        $data= json_encode(array(
-            "clave"=> $json->Clave,
-            "fecha" => date('c'),
-            "emisor"=>array(
-                "tipoIdentificacion" => $json->Emisor->Identificacion->Tipo,
-                "numeroIdentificacion" => $json->Emisor->Identificacion->Numero,
-            ),
-            "receptor" =>array(
-                "tipoIdentificacion" => $json->Receptor->Identificacion->Tipo,
-                "numeroIdentificacion" => $json->Receptor->Identificacion->Numero,
-            ),
-            "comprobanteXml"=> $xml64
-        ));
-        //token
-        $header= array(
-            "Authorization: bearer ".$this->token(),
-            "Content-Type: application/json",
-        );
-
-        $curl = curl_init(getenv('factura.urlRecepcion'));
-        curl_setopt($curl, CURLOPT_HEADER, true);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-        //ejecutar el curl
-        $respuesta= curl_exec($curl);
-        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
-        curl_close($curl);
-        //obtener respuesta
-        return json_encode(array('respuesta' =>$respuesta, 'status'=>$status ));      //echo $status;
-
-    }//Fin de enviarXML
 }//Fin de la clase
