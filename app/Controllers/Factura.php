@@ -163,46 +163,6 @@ class Factura extends BaseController
         return json_encode( array('response'=> $response , 'xml'=>$xml ));
 
     }
-<<<<<<< HEAD
-    public function validarPorClave(){
-        $clave= $_POST['clave'];
-        $header= array(
-            "Authorization: bearer ".$this->token(),
-            "Content-Type: application/json",
-        );
-
-
-        $curl = curl_init(getenv('factura.urlRecepcion')."/".$clave);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-
-        //ejecutar el curl
-        $response= curl_exec($curl);
-        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
-        curl_close($curl);
-        //obtener respuesta
-
-        $xml= json_decode($response, true);
-        //var_dump($xml);
-
-        if (isset($xml['respuesta-xml'])) {
-            $respuesta_xml= $xml['respuesta-xml'];
-            $stringXML= base64_decode($respuesta_xml);
-
-            $salida="archivos/xml/respuesta/".$clave.".xml";
-            $doc = new DomDocument();
-            $doc->preseveWhiteSpace = false;
-            $doc->loadXml($stringXML);
-            $doc->save($salida);
-        }
-    }
-=======
->>>>>>> 950e4e6f4ddb908813ef8d8e14c33c291179982b
 
     public function facturaPDF(){
         //is Login
