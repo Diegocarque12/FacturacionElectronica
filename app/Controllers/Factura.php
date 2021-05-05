@@ -266,7 +266,7 @@ class Factura extends BaseController
 
         $id_factura= $selectConsecutivo->consecutivo;
         $factura= str_pad($id_factura,10,"0",STR_PAD_LEFT);
-        $surcusal= "001";
+        $surcusal= "003";
         $pv="00003";
         $tipoDocumento=$id_tipo_documento;
 
@@ -343,8 +343,6 @@ class Factura extends BaseController
             <PlazoCredito>'.$dias.'</PlazoCredito>
             <MedioPago>'.$medio_pago.'</MedioPago>
             <DetalleServicio>';
-
-
 
             $totalServGravados=0;
             $totalServExentos=0;
@@ -548,9 +546,11 @@ class Factura extends BaseController
 
             $validar=  json_decode($this->validarXml($xml64), true);
             if (isset($validar['xml']['ind-estado'])) {
+
+                $DocumentosModel->setValidoAtv($validar['xml']['ind-estado']);
+                
                 if($validar['xml']['ind-estado']!="procesando"){
 
-                    //actualizar validado-----
 
                     $json= json_decode(json_encode(simplexml_load_string(base64_decode($validar['xml']['respuesta-xml']))));
                     if($json->Mensaje<3){

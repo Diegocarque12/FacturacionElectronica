@@ -100,8 +100,6 @@
 			<td align="right"><?= number_format($documento->total_comprobante,"2",",",".")?></td>
 		</tr>
 	</tfoot>
-	
-	
 </table>
 
 <small>Clave: <?=$documento->clave;?></small><br>
