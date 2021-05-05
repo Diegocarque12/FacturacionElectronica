@@ -209,7 +209,7 @@ class Factura extends BaseController
         return json_encode( array('response'=> $response , 'xml'=>$xml ));
 
     }
-    public function validarDesantendido(){
+    public function validarPorClave(){
         $clave= $_POST['clave'];
         
         $header= array(
@@ -505,7 +505,7 @@ class Factura extends BaseController
 
             }
 
-        ///***
+        ///***Documentos Model  -- Insertar documento
             $DocumentosModel= new DocumentosModel();
             $DocumentosModel->setConsecutivo($consecutivo);
             $DocumentosModel->setTipoDocumento($id_tipo_documento);
@@ -561,7 +561,7 @@ class Factura extends BaseController
             $DocumentosModel->setValidoAtv(0);
             $id_documento= $DocumentosModel->insertarDocumento();
         ///*** 
-            //solo para insertar
+            //solo para insertar detalle
         foreach ($_POST['codigo'] as $key => $linea) {
                 //insertar cada detalle
                 $DocumentosDetallesModel= new DocumentosDetallesModel();

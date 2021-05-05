@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FacturaElectronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica">
-            <Clave>50604052100040216065300100002010000000171147208156</Clave>
+            <Clave>50604052100040216065300100003010000000195113274096</Clave>
             <CodigoActividad>721001</CodigoActividad>
-            <NumeroConsecutivo>00100002010000000171</NumeroConsecutivo>
-            <FechaEmision>2021-05-04T17:53:56-06:00</FechaEmision>
+            <NumeroConsecutivo>00100003010000000195</NumeroConsecutivo>
+            <FechaEmision>2021-05-04T19:45:18-06:00</FechaEmision>
             <Emisor>
                 <Nombre>Joseph Rodriguez Roman</Nombre>
                 <Identificacion>
@@ -22,7 +22,7 @@
                     <CodigoPais>506</CodigoPais>
                     <NumTelefono>88888888</NumTelefono>
                 </Telefono>
-                <CorreoElectronico>jrodriguez081192@gmail.com</CorreoElectronico>
+                <CorreoElectronico>diegocarque1213@gmail.com</CorreoElectronico>
             </Emisor>
             <Receptor>
                 <Nombre>Taller Gonzáles S.A</Nombre>
@@ -42,7 +42,7 @@
                     <CodigoPais>506</CodigoPais>
                     <NumTelefono>24874310</NumTelefono>
                 </Telefono>
-                <CorreoElectronico>jrodriguez081192@gmail.com</CorreoElectronico>
+                <CorreoElectronico>diegocarque1213@gmail.com</CorreoElectronico>
             </Receptor>
             <CondicionVenta>01</CondicionVenta>
             <PlazoCredito>0</PlazoCredito>
