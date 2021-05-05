@@ -211,7 +211,6 @@ class Factura extends BaseController
     }
     public function validarPorClave(){
         $clave= $_POST['clave'];
-        
         $header= array(
             "Authorization: bearer ".$this->token(),
             "Content-Type: application/json",

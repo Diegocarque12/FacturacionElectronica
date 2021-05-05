@@ -248,7 +248,7 @@
         <b>Validar: </b> <div id="divValidar"></div>
       </div>
       <div class="modal-footer justify-content-between">
-        <a href="<?=base_url('facturar/listado')?>"><button type="button" class="btn btn-primary" data-dismiss="modal">Listado</button></a>
+        <a onclick="$(location).attr('href','<?=base_url('factura/listado')?>');"><button type="button" class="btn btn-primary" data-dismiss="modal">Listado</button></a>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -386,7 +386,7 @@ $("#frmFacturar").on('submit', function(e){
 $(document).on('click','.reValidar',function(){
   Pace.track(function () {
     $.ajax({
-      "url": "<?=base_url()?>/facturar/validarXmlDesatendido",
+      "url": "<?=base_url()?>/factura/validarPorClave",
       "method": "post",
       "data": {"clave": this.value},
       "dataType": "json",
