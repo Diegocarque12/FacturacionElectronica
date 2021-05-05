@@ -348,7 +348,6 @@ $(document).on('click','.eliminarLinea',function(){
 });
 
 
-
 $("#frmFacturar").on('submit', function(e){
   $("#btnGenerarFactura").attr('disabled', true);
   e.preventDefault();
@@ -371,10 +370,10 @@ $("#frmFacturar").on('submit', function(e){
           alert("documento rechazado");
         }
 
-        $("#divValidar").html('');
-        if (response.validar_estado=="procesando") {
-          $("#divValidar").append('<button class="btn btn-warning btn-sm reValidar" value="'+response.clave+'">Validar</button>');
-        }
+        /*$("#divValidar").html('');
+        //if (response.validar_estado=="procesando") {
+          $("#divValidar").append('<button id="reValidar" class="btn btn-warning btn-sm" value="'+response.clave+'" >Validar</button>');
+        }*/
 
 
 
@@ -383,12 +382,11 @@ $("#frmFacturar").on('submit', function(e){
   });
 });
 
-$(document).on('click','.reValidar',function(){
-  Pace.track(function () {
+$(document).on('click','#reValidar',function(){
     $.ajax({
-      "url": "<?=base_url()?>/factura/validarPorClave",
+      "url": "/factura/validarPorClave",
       "method": "post",
-      "data": {"clave": this.value},
+      "data": {'clave': this.value},
       "dataType": "json",
     }).done(function (response) {
       $("#lblValidado").text(response.ind_estado);
@@ -396,7 +394,6 @@ $(document).on('click','.reValidar',function(){
     }).always(function (response) {
       $("#btnGenerarFactura").attr('disabled', false);
     });
-  });
 });
 
 
