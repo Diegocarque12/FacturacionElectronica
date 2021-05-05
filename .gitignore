@@ -1,5 +1,7 @@
 .env
 
+archivos/*
+
 writable/*
 
 */config/development
