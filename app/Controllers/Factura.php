@@ -237,7 +237,6 @@ class Factura extends BaseController
     }
 
 
-
     public function generarFactura(){
         if( is_login() ){
             
@@ -642,7 +641,7 @@ class Factura extends BaseController
 
 
     //Validar documento por clave
-    public function validarClave(){
+    public function validar(){
         $clave= $_POST['clave'];
 
         $header= array(
