@@ -461,6 +461,7 @@ class Factura extends BaseController
                 'url' => base_url()."/factura/verificar/". $documento->clave, 
             );
 
+            $logoImg= file_get_contents(base_url('plantilla/dist/img/logo.jpg'));
             
             $dataPdf=array(
                 'nombre_archivo' => "/pdf/".$documento->clave.".pdf", 
