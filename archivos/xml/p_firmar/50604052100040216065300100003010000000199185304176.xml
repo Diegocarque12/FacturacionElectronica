@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FacturaElectronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica">
-            <Clave>50604052100040216065300100003010000000195113274096</Clave>
+            <Clave>50604052100040216065300100003010000000199185304176</Clave>
             <CodigoActividad>721001</CodigoActividad>
-            <NumeroConsecutivo>00100003010000000195</NumeroConsecutivo>
-            <FechaEmision>2021-05-04T19:45:18-06:00</FechaEmision>
+            <NumeroConsecutivo>00100003010000000199</NumeroConsecutivo>
+            <FechaEmision>2021-05-04T19:56:56-06:00</FechaEmision>
             <Emisor>
                 <Nombre>Joseph Rodriguez Roman</Nombre>
                 <Identificacion>
@@ -50,20 +50,23 @@
             <DetalleServicio><LineaDetalle>
                     <NumeroLinea>1</NumeroLinea>
                     <Codigo>8344900000000</Codigo>
-                    <Cantidad>1</Cantidad>
+                    <Cantidad>17</Cantidad>
                     <UnidadMedida>Unid</UnidadMedida>
-                    <Detalle>rasdasd</Detalle>
-                    <PrecioUnitario>100</PrecioUnitario>
-                    <MontoTotal>100</MontoTotal><SubTotal>100</SubTotal>
+                    <Detalle>Fresa</Detalle>
+                    <PrecioUnitario>42342</PrecioUnitario>
+                    <MontoTotal>719814</MontoTotal><Descuento>
+                            <MontoDescuento>21594.42</MontoDescuento>
+                            <NaturalezaDescuento>Descuento cliente</NaturalezaDescuento>
+                        </Descuento><SubTotal>698219.58</SubTotal>
                     <Impuesto>
                         <Codigo>01</Codigo>
                         <CodigoTarifa>08</CodigoTarifa>
                         <Tarifa>13</Tarifa>
-                        <Monto>13</Monto>  
+                        <Monto>90768.54539999999</Monto>  
                     </Impuesto>
                     
-                    <ImpuestoNeto>13</ImpuestoNeto>
-                    <MontoTotalLinea>113</MontoTotalLinea>
+                    <ImpuestoNeto>90768.54539999999</ImpuestoNeto>
+                    <MontoTotalLinea>788988.1253999999</MontoTotalLinea>
                 </LineaDetalle></DetalleServicio>
             <ResumenFactura>
                 <CodigoTipoMoneda>
@@ -73,17 +76,17 @@
                 <TotalServGravados>0</TotalServGravados>
                 <TotalServExentos>0</TotalServExentos>
                 <TotalServExonerado>0</TotalServExonerado>
-                <TotalMercanciasGravadas>100</TotalMercanciasGravadas>
+                <TotalMercanciasGravadas>719814</TotalMercanciasGravadas>
                 <TotalMercanciasExentas>0</TotalMercanciasExentas>
                 <TotalMercExonerada>0</TotalMercExonerada>
-                <TotalGravado>100</TotalGravado>
+                <TotalGravado>719814</TotalGravado>
                 <TotalExento>0</TotalExento>
                 <TotalExonerado>0</TotalExonerado>
-                <TotalVenta>100</TotalVenta>
-                <TotalDescuentos>0</TotalDescuentos>
-                <TotalVentaNeta>100</TotalVentaNeta>
-                <TotalImpuesto>13</TotalImpuesto>
-                <TotalComprobante>113</TotalComprobante>
+                <TotalVenta>719814</TotalVenta>
+                <TotalDescuentos>21594.42</TotalDescuentos>
+                <TotalVentaNeta>698219.58</TotalVentaNeta>
+                <TotalImpuesto>90768.5454</TotalImpuesto>
+                <TotalComprobante>788988.1254</TotalComprobante>
             </ResumenFactura>
             <Otros>
                 <OtroTexto/>

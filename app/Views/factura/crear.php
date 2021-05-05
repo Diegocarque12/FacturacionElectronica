@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Dash</h1>
+          <h1 class="m-0">Nueva Factura</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -82,14 +82,14 @@
                           <span class="input-group-text"><i class="fas fa-cash-register"></i></span>
                         </div>
                         <select class="form-control" id="medio_pago" name="medio_pago" required>
-                          <option value="">Selecione Medio Pago</option>
+                          <option value="">Medio Pago</option>
                           <option value="01">Efectivo</option>
                           <option value="04">Transferencia</option>
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -120,7 +120,7 @@
               </button>
             </div>
             <div class="card-body">
-              <div class="row table-responsive">
+              <div class="row table-responsive align-items-center">
                 <table class="table table-hover table-bordered">
                   <thead>
                     <tr>
@@ -348,7 +348,6 @@ $(document).on('click','.eliminarLinea',function(){
 });
 
 
-
 $("#frmFacturar").on('submit', function(e){
   $("#btnGenerarFactura").attr('disabled', true);
   e.preventDefault();
@@ -371,10 +370,10 @@ $("#frmFacturar").on('submit', function(e){
           alert("documento rechazado");
         }
 
-        $("#divValidar").html('');
-        if (response.validar_estado=="procesando") {
-          $("#divValidar").append('<button class="btn btn-warning btn-sm reValidar" value="'+response.clave+'">Validar</button>');
-        }
+        /*$("#divValidar").html('');
+        //if (response.validar_estado=="procesando") {
+          $("#divValidar").append('<button id="reValidar" class="btn btn-warning btn-sm" value="'+response.clave+'" >Validar</button>');
+        }*/
 
 
 
@@ -383,12 +382,11 @@ $("#frmFacturar").on('submit', function(e){
   });
 });
 
-$(document).on('click','.reValidar',function(){
-  Pace.track(function () {
+$(document).on('click','#reValidar',function(){
     $.ajax({
-      "url": "<?=base_url()?>/factura/validarPorClave",
+      "url": "/factura/validarPorClave",
       "method": "post",
-      "data": {"clave": this.value},
+      "data": {'clave': this.value},
       "dataType": "json",
     }).done(function (response) {
       $("#lblValidado").text(response.ind_estado);
@@ -396,7 +394,6 @@ $(document).on('click','.reValidar',function(){
     }).always(function (response) {
       $("#btnGenerarFactura").attr('disabled', false);
     });
-  });
 });
 
 

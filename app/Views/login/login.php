@@ -36,7 +36,7 @@
       <p>Alejandra Arroyo, Keilyn Ramírez, Jose Pablo Campos, Diego Carvajal</p>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Inicio de sesion</p>
+      <p class="login-box-msg">Inicio de sesión</p>
 
       <form id="frmLogin">
         <div class="input-group mb-3">
