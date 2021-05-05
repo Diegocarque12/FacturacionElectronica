@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Dash</h1>
+          <h1 class="m-0">Nueva Factura</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -82,14 +82,14 @@
                           <span class="input-group-text"><i class="fas fa-cash-register"></i></span>
                         </div>
                         <select class="form-control" id="medio_pago" name="medio_pago" required>
-                          <option value="">Selecione Medio Pago</option>
+                          <option value="">Medio Pago</option>
                           <option value="01">Efectivo</option>
                           <option value="04">Transferencia</option>
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -120,7 +120,7 @@
               </button>
             </div>
             <div class="card-body">
-              <div class="row table-responsive">
+              <div class="row table-responsive align-items-center">
                 <table class="table table-hover table-bordered">
                   <thead>
                     <tr>

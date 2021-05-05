@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica">
+            <Clave>50604052100040216065300100003010000000201180957214</Clave>
+            <CodigoActividad>721001</CodigoActividad>
+            <NumeroConsecutivo>00100003010000000201</NumeroConsecutivo>
+            <FechaEmision>2021-05-04T20:00:17-06:00</FechaEmision>
+            <Emisor>
+                <Nombre>Joseph Rodriguez Roman</Nombre>
+                <Identificacion>
+                    <Tipo>01</Tipo>
+                    <Numero>402160653</Numero>
+                </Identificacion>
+                <NombreComercial>JR</NombreComercial>
+                <Ubicacion>
+                    <Provincia>4</Provincia>
+                    <Canton>02</Canton>
+                    <Distrito>02</Distrito>
+                    <Barrio>05</Barrio>
+                    <OtrasSenas>La maquina</OtrasSenas>
+                </Ubicacion>
+                <Telefono>
+                    <CodigoPais>506</CodigoPais>
+                    <NumTelefono>88888888</NumTelefono>
+                </Telefono>
+                <CorreoElectronico>diegocarque1213@gmail.com</CorreoElectronico>
+            </Emisor>
+            <Receptor>
+                <Nombre>Taller Gonzáles S.A</Nombre>
+                <Identificacion>
+                    <Tipo>02</Tipo>
+                    <Numero>3101143237</Numero>
+                </Identificacion>
+                <NombreComercial/>
+                <Ubicacion>
+                    <Provincia>2</Provincia>
+                    <Canton>01</Canton>
+                    <Distrito>13</Distrito>
+                    <Barrio>05</Barrio>
+                    <OtrasSenas>500M SUR DEL RESTAURANTE FIESTA DEL MAÍZ</OtrasSenas>
+                </Ubicacion>
+                <Telefono>
+                    <CodigoPais>506</CodigoPais>
+                    <NumTelefono>24874310</NumTelefono>
+                </Telefono>
+                <CorreoElectronico>diegocarque1213@gmail.com</CorreoElectronico>
+            </Receptor>
+            <CondicionVenta>01</CondicionVenta>
+            <PlazoCredito>0</PlazoCredito>
+            <MedioPago>04</MedioPago>
+            <DetalleServicio><LineaDetalle>
+                    <NumeroLinea>1</NumeroLinea>
+                    <Codigo>8344900000000</Codigo>
+                    <Cantidad>18</Cantidad>
+                    <UnidadMedida>Sp</UnidadMedida>
+                    <Detalle>Fresa</Detalle>
+                    <PrecioUnitario>432432</PrecioUnitario>
+                    <MontoTotal>7783776</MontoTotal><Descuento>
+                            <MontoDescuento>622702.08</MontoDescuento>
+                            <NaturalezaDescuento>Descuento cliente</NaturalezaDescuento>
+                        </Descuento><SubTotal>7161073.92</SubTotal>
+                    <Impuesto>
+                        <Codigo>01</Codigo>
+                        <CodigoTarifa>08</CodigoTarifa>
+                        <Tarifa>13</Tarifa>
+                        <Monto>930939.6096</Monto>  
+                    </Impuesto>
+                    
+                    <ImpuestoNeto>930939.6096</ImpuestoNeto>
+                    <MontoTotalLinea>8092013.5296</MontoTotalLinea>
+                </LineaDetalle></DetalleServicio>
+            <ResumenFactura>
+                <CodigoTipoMoneda>
+                    <CodigoMoneda>CRC</CodigoMoneda>
+                    <TipoCambio>1</TipoCambio>
+                </CodigoTipoMoneda>
+                <TotalServGravados>7783776</TotalServGravados>
+                <TotalServExentos>0</TotalServExentos>
+                <TotalServExonerado>0</TotalServExonerado>
+                <TotalMercanciasGravadas>0</TotalMercanciasGravadas>
+                <TotalMercanciasExentas>0</TotalMercanciasExentas>
+                <TotalMercExonerada>0</TotalMercExonerada>
+                <TotalGravado>7783776</TotalGravado>
+                <TotalExento>0</TotalExento>
+                <TotalExonerado>0</TotalExonerado>
+                <TotalVenta>7783776</TotalVenta>
+                <TotalDescuentos>622702.08</TotalDescuentos>
+                <TotalVentaNeta>7161073.92</TotalVentaNeta>
+                <TotalImpuesto>930939.6096</TotalImpuesto>
+                <TotalComprobante>8092013.5296</TotalComprobante>
+            </ResumenFactura>
+            <Otros>
+                <OtroTexto/>
+            </Otros>
+        </FacturaElectronica>
