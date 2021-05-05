@@ -163,8 +163,8 @@ class Factura extends BaseController
         return json_encode( array('response'=> $response , 'xml'=>$xml ));
 
     }
-<<<<<<< HEAD
-    public function validarPorClave(){
+
+    /*public function validarPorClave(){
         $clave= $_POST['clave'];
         $header= array(
             "Authorization: bearer ".$this->token(),
@@ -200,9 +200,7 @@ class Factura extends BaseController
             $doc->loadXml($stringXML);
             $doc->save($salida);
         }
-    }
-=======
->>>>>>> 950e4e6f4ddb908813ef8d8e14c33c291179982b
+    }*/
 
     public function facturaPDF(){
         //is Login

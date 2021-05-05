@@ -30,11 +30,11 @@
 
                     <div class="card-body">
                         <table class="table table-bordered table-hover" id="tabla">
-                            <thead>
+                            <thead class=" bg-info">
                                 <tr>
                                     <th>Fecha</th>
                                     <th>Consecutivo</th>
-                                    <th>Cliehte</th>
+                                    <th>Cliente</th>
                                     <th>Total</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -58,7 +58,7 @@
                                                     PDF</a>
                                                 <button class="dropdown-item estadoMH"
                                                     value="<?=$documento->clave?>">Estado MH</button>
-                                                <a class="dropdown-item" href="#">Nota de credito</a>
+                                                <a class="dropdown-item" href="#">Nota de crédito</a>
                                             </div>
                                         </div>
                                     </td>
