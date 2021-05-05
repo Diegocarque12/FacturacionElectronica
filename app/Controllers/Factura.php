@@ -349,6 +349,10 @@ class Factura extends BaseController
             $respuesta_xml= $xml['respuesta-xml'];
             $stringXML= base64_decode($respuesta_xml);
 
+            if (!file_exists('archivos/xml/respuesta/')) {
+                mkdir('archivos/xml/respuesta', 0777, true);
+            }
+
             $salida="archivos/xml/respuesta/".$json->Clave.".xml";
             $doc = new DomDocument();
             $doc->preseveWhiteSpace = false;
@@ -457,15 +461,12 @@ class Factura extends BaseController
                 'url' => base_url()."/factura/verificar/". $documento->clave, 
             );
 
-            $logoImg= file_get_contents(base_url('plantilla/dist/img/logo.jpg'));
-
             
             $dataPdf=array(
                 'nombre_archivo' => "/pdf/".$documento->clave.".pdf", 
                 'documento' => $documento,
                 'detalles' => $detalles,
                 "qrCodigo" => $qr->codigoQR($dataQR),
-                "logo" => base64_encode($logoImg),
             );
             $pdf->save_view("pdfs/facturaPDF", $dataPdf );
        }else{
@@ -484,7 +485,8 @@ class Factura extends BaseController
 
     public function generarFactura(){
         if( is_login() ){
-
+            
+            $this->request->getPost('id_cliente');
         $id_cliente= $_POST['id_cliente'];
         $moneda= $_POST['moneda'];
         $tipo_cambio= $_POST['tipo_cambio'];
@@ -513,7 +515,7 @@ class Factura extends BaseController
         $id_factura= $selectConsecutivo->consecutivo;
         $factura= str_pad($id_factura,10,"0",STR_PAD_LEFT);
         $surcusal= "001";
-        $pv="00002";
+        $pv="00003";
         $tipoDocumento=$id_tipo_documento;
 
         $consecutivo=$surcusal.$pv.$tipoDocumento.$factura;
@@ -522,7 +524,6 @@ class Factura extends BaseController
 
         $EmpresasModel->setIdEmpresa(session()->get('id_empresa'));
         $emisor= $EmpresasModel->selectEmpresa();
-
 
         $cod= $emisor->codigo_telefono;
         $ced= $emisor->identificacion;
@@ -765,6 +766,10 @@ class Factura extends BaseController
         </FacturaElectronica>
         ';
 
+        if (!file_exists('archivos/xml/p_firmar/')) {
+            mkdir('archivos/xml/p_firmar', 0777, true);
+        }
+
         $salida= "archivos/xml/p_firmar/$clave.xml";
         $doc = new DomDocument();
         $doc->preseveWhiteSpace = false;
@@ -829,6 +834,7 @@ class Factura extends BaseController
                         "mensaje" => $json->Mensaje,
                         "validar_mensaje" => $json->DetalleMensaje,
                         "correo_enviado" => $correo_enviado,
+                        "correo" => $correo_enviado,
                     ));
                 }else{
                     return json_encode(array(

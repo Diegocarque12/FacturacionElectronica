@@ -32,6 +32,8 @@ class Login extends BaseController
                     'nombre' => $usuario->nombre,
                     'usuario' => $usuario->usuario,
                     'correo' => $usuario->correo,
+					//select empresa del usuario solo enc
+					'id_empresa' => $usuario->id_empresa,
                 );
                 $session = \Config\Services::session();
                 $session->set($dataSesion);

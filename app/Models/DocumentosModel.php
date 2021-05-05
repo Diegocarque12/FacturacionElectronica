@@ -32,7 +32,7 @@ class DocumentosModel extends Model
     private $receptor_id_distrito;
     private $receptor_id_barrio;
     private $receptor_otras_senas;
-    private $receptor_cod ;
+    private $receptor_cod;
     private $receptor_telefono;
     private $receptor_correo;
     private $condicion_venta;

@@ -10,6 +10,7 @@ class UsuariosModel extends Model{
     private $correo;
     private $pass;
     private $id_rol;
+    private $id_empresa;
     private $activo;
 
     private $tabla='usuarios';
@@ -54,6 +55,13 @@ class UsuariosModel extends Model{
         $this->id_rol = $id_rol;
         return $this;
     }
+
+    public function setIdEmpresa($id_empresa)
+    {
+        $this->id_empresa = $id_empresa;
+        return $this;
+    }
+
 
     public function setActivo($activo)
     {

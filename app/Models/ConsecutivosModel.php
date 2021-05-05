@@ -69,6 +69,8 @@ class ConsecutivosModel extends Model{
 
 ///***
 
+    
+
     public function selectConsecutivo(){
         $query = $this->db->table($this->tabla);
         $query->where('ambiente', $this->ambiente);
@@ -85,5 +87,7 @@ class ConsecutivosModel extends Model{
         $query->where('tipo_documento', $this->tipo_documento);
         $query->update($data);
         return $this->db->affectedRows();
-    }//Fin de actualizar consecutivo
-}//Fin de la clase
+    }
+
+
+}
