@@ -13,6 +13,7 @@ use App\Models\ConsecutivosModel;
 use App\Models\EmpresasModel;
 use App\Models\DocumentosModel;
 use App\Models\DocumentosDetallesModel;
+
 class Factura extends BaseController
 {
 	public function crear()
@@ -28,61 +29,14 @@ class Factura extends BaseController
 
 	public function listado()
 	{
-		return view('factura/listado');
+        $documentosModel= new DocumentosModel();
+
+        $data= array(
+            'documentos' => $documentosModel->selectDocumentos(),
+        );
+
+		return view('factura/listado', $data);
 	}
-
-
-    private function totales($detalles){
-        $totalServGravados=0;
-        $totalServExentos=0;
-        $totalServExonerado=0;
-        $totalMercanciasGravadas=0;
-        $totalMercanciasExentas=0;
-        $totalMercExonerada=0;
-        $totalGravado=0;
-        $totalExento=0;
-        $totalExonerado=0;
-        $totalVenta=0;
-        $totalDescuentos=0;
-        $totalVentaNeta=0;
-        $totalImpuesto=0;
-        $totalComprobante=0;
-
-        foreach ($detalles as $key => $linea) {
-            //es un servicio
-            if ($linea->unidad=="Sp" || $linea->unidad=="Spe") {
-                //todos los servicios son gravados
-                $totalServGravados+= ($linea->precio*$linea->cantidad);
-            }else{
-                 //todas las mercancias son gravados
-                $totalMercanciasGravadas+=($linea->precio*$linea->cantidad);
-            }
-            //todas las mercancias y servicios son gravados
-            $totalGravado+= ($linea->precio*$linea->cantidad);
-            $totalVenta+=($linea->precio*$linea->cantidad);
-            $totalVentaNeta+=($linea->precio*$linea->cantidad);
-            $totalImpuesto+=((($linea->precio*$linea->cantidad) * $linea->tarifa)/100);
-            $totalComprobante+=((($linea->precio*$linea->cantidad) * $linea->tarifa)/100) +($linea->precio*$linea->cantidad);
-        }
-
-        return json_encode(array(
-            'totalServGravados' => $totalServGravados, 
-            'totalServExentos' => $totalServExentos, 
-            'totalServExonerado' => $totalServExonerado, 
-            'totalMercanciasGravadas' => $totalMercanciasGravadas, 
-            'totalMercanciasExentas' => $totalMercanciasExentas, 
-            'totalMercExonerada' => $totalMercExonerada, 
-            'totalGravado' => $totalGravado, 
-            'totalExento' => $totalExento, 
-            'totalExonerado' => $totalExonerado, 
-            'totalVenta' => $totalVenta, 
-            'totalDescuentos' => $totalDescuentos, 
-            'totalVentaNeta' => $totalVentaNeta, 
-            'totalImpuesto' => $totalImpuesto, 
-            'totalComprobante' => $totalComprobante, 
-        ));
-
-    }
 
 
     public function token(){
@@ -209,9 +163,9 @@ class Factura extends BaseController
         return json_encode( array('response'=> $response , 'xml'=>$xml ));
 
     }
+<<<<<<< HEAD
     public function validarPorClave(){
         $clave= $_POST['clave'];
-        
         $header= array(
             "Authorization: bearer ".$this->token(),
             "Content-Type: application/json",
@@ -234,7 +188,7 @@ class Factura extends BaseController
         //obtener respuesta
 
         $xml= json_decode($response, true);
-        var_dump($xml);
+        //var_dump($xml);
 
         if (isset($xml['respuesta-xml'])) {
             $respuesta_xml= $xml['respuesta-xml'];
@@ -246,8 +200,9 @@ class Factura extends BaseController
             $doc->loadXml($stringXML);
             $doc->save($salida);
         }
-
     }
+=======
+>>>>>>> 950e4e6f4ddb908813ef8d8e14c33c291179982b
 
     public function facturaPDF(){
         //is Login
@@ -281,8 +236,7 @@ class Factura extends BaseController
                 "logo" => base64_encode($logoImg),
             );
 
-            
-            $this->response->setHeader('Content-Type', 'application/pdf');
+            $this->response->setContentType('application/pdf');
             $pdf->load_view("pdfs/facturaPDF", $dataPdf );
        }else{
         echo "Documento no existe";
@@ -320,15 +274,6 @@ class Factura extends BaseController
         echo "Documento no existe";
        }
     }
-
-    //no se usa asi
-    public function encodeXml(){
-        $ruta = "archivos/xml/firmados/50612042100040216065300100001010000000104192356551_f.xml";
-        $archivo= file_get_contents($ruta);
-        $xml64= base64_encode($archivo);
-        return  $xml64;
-    }
-
 
     public function generarFactura(){
         if( is_login() ){
@@ -744,6 +689,50 @@ class Factura extends BaseController
         }else{
             return view('login/login');
         }
-    }
-	
-}
+    }//
+
+
+    //Validar documento por clave
+    public function validar(){
+        $clave= $_POST['clave'];
+
+        $header= array(
+            "Authorization: bearer ".$this->token(),
+            "Content-Type: application/json",
+        );
+
+
+        $curl = curl_init(getenv('factura.urlRecepcion')."/".$clave);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+
+        //ejecutar el curl
+        $response= curl_exec($curl);
+        $status= curl_getinfo($curl,CURLINFO_HTTP_CODE);
+        curl_close($curl);
+        //obtener respuesta
+
+        $xml= json_decode($response, true);
+        
+        //var_dump($xml);
+
+        if (isset($xml['respuesta-xml'])) {
+            $respuesta_xml= $xml['respuesta-xml'];
+            $stringXML= base64_decode($respuesta_xml);
+
+            $salida="archivos/xml/respuesta/".$clave.".xml";
+            $doc = new DomDocument();
+            $doc->preseveWhiteSpace = false;
+            $doc->loadXml($stringXML);
+            $doc->save($salida);
+        }
+
+        return $response;
+    }//Fin de validar
+
+}//Fin de la clase

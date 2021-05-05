@@ -134,7 +134,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script src="<?=base_url()?>/plantilla/plugins/pace/pace.min.js"></script>
 
+<<<<<<< HEAD
     <?= $this->renderSection('script'); ?>
+=======
+<!-- SweetAlert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+function mensaje(titulo, mensaje, icono)
+{
+  swal({
+  title: titulo,
+  text: mensaje,
+  icon: icono,
+});
+}//Fin del mensaje
+</script>
+
+<?= $this->renderSection('script'); ?>
+>>>>>>> 30fcc0f8a1f9049f875449d7d13de5df5577158f
 </body>
 
 </html>
