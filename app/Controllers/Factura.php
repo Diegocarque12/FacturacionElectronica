@@ -333,7 +333,7 @@ class Factura extends BaseController
     public function generarFactura(){
         if( is_login() ){
             
-            $this->request->getPost('id_cliente');
+            //$this->request->getPost('id_cliente');
         $id_cliente= $_POST['id_cliente'];
         $moneda= $_POST['moneda'];
         $tipo_cambio= $_POST['tipo_cambio'];
