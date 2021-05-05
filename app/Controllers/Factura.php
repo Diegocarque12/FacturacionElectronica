@@ -634,6 +634,13 @@ class Factura extends BaseController
         if ($enviar->status>=200 && $enviar->status<300) {
             //actualizar enviado-----
             sleep(4);
+            //actualizar enviado fecha y envio
+            $DocumentosModel = new DocumentosModel();
+            $DocumentosModel->setIdDocumento($id_documento);
+            $DocumentosModel->setEnvioAtv($enviar->status);
+            $DocumentosModel->setFechaEnvio(date('c'));
+            $DocumentosModel->actualizarEnvio();
+
             $validar=  json_decode($this->validarXml($xml64), true);
             if (isset($validar['xml']['ind-estado'])) {
                 if($validar['xml']['ind-estado']!="procesando"){
@@ -707,6 +714,13 @@ class Factura extends BaseController
 
 
         }else{
+            //actualiza envio
+            $DocumentosModel = new DocumentosModel();
+            $DocumentosModel->setIdDocumento($id_documento);
+            $DocumentosModel->setEnvioAtv($enviar->status);
+            $DocumentosModel->setFechaEnvio(date('c'));
+            $DocumentosModel->actualizarEnvio();
+
             return json_encode(array(
                 'clave' => $clave, 
                 "enviar"=> $enviar->status,
