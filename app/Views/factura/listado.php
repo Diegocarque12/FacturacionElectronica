@@ -43,7 +43,7 @@
                                 <?php foreach ($documentos as $key => $documento):?>
                                 <tr>
                                     <td><?=$documento->fecha?></td>
-                                    <td><?=$documento->clave?></td>
+                                    <td><?=$documento->consecutivo?></td>
                                     <td><?=$documento->receptor_nombre?></td>
                                     <td>¢ <?=number_format($documento->total_comprobante,"2",",",".") ?></td>
                                     <td>
@@ -56,7 +56,7 @@
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" href="facturaPDF/<?=$documento->clave?>">Ver
                                                     PDF</a>
-                                                <button class="dropdown-item" id="estadoMH"
+                                                <button class="dropdown-item estadoMH"
                                                     value="<?=$documento->clave?>">Estado MH</button>
                                                 <a class="dropdown-item" href="#">Nota de credito</a>
                                             </div>
@@ -78,23 +78,38 @@
 <script>
 $(document).ready(function() {
     //Validar el estado de un documento
-    $("#estadoMH").on('click', function() {
+    $(".estadoMH").on('click', function() {
         $.ajax({
             "url": "<?=base_url('/factura/validar')?>",
             "method": "post",
-            "data":{'clave': this.value},
+            "data": {
+                'clave': this.value
+            },
             "dataType": "json",
         }).done(function(response) {
-            alert(response);
-            //mensaje('mensaje', response, 'warning');
-            /*if (response == 'Apr') {
-                mensaje("Alerta", "Libro agregado correctamente");
-
-                $(".inp").val("");
+            if (response['ind-estado'] == 'rechazado') {
+                swal({
+                    title: "Estado",
+                    text: "Rechazado",
+                    icon: 'error',
+                });
             } //Fin del if
             else {
-                mensaje('Error', 'El libro ya se encuentra agregado')
-            } //Fin del else*/
+                if (response['ind-estado'] == 'aceptado') {
+                    swal({
+                    title: "Estado",
+                    text: "Aceptado",
+                    icon: 'success',
+                });
+                } //Fin del if
+                else {
+                    swal({
+                    title: "Estado",
+                    text: "Procesando",
+                    icon: 'warning',
+                });
+                }
+            } //Fin del else
         });
     });
 });

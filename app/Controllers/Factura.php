@@ -678,7 +678,8 @@ class Factura extends BaseController
         //obtener respuesta
 
         $xml= json_decode($response, true);
-        var_dump($xml);
+        
+        //var_dump($xml);
 
         if (isset($xml['respuesta-xml'])) {
             $respuesta_xml= $xml['respuesta-xml'];
@@ -690,6 +691,8 @@ class Factura extends BaseController
             $doc->loadXml($stringXML);
             $doc->save($salida);
         }
-    }//Fin de validarClave
+
+        return $response;
+    }//Fin de validar
 
 }//Fin de la clase
